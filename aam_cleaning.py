@@ -107,11 +107,11 @@ industry_patterns = [('Information','Information Technology'),('software','Infor
 # Convert the 'Industry' column to string
 z['Industry'] = tempdf['Industry'].astype('string')
 
-# Use the generalize function (check the generalize.py file). This will sort the column and create a new column based on sector
+# Use the generalize function (check the generalize_function.py file). This will sort the column and create a new column based on sector
 z['clean_industry'] = generalize(z['Industry'], industry_patterns)
 
 # Create a list of the sectors you made in 'clean_industry' and drop the rest. 
-# The rest are mostly industries that are difficult to fit into the current list
+# The dropped values are mostly industries that are difficult to fit into the current list
 ind_list = ['Public','Information Technology','Finance','Healthcare','Education','Engineering','Law','Media','Arts','Science','Other']
 z = z.drop(z.loc[z['clean_industry'].isin(ind_list) == False].index)
 
