@@ -4,5 +4,7 @@ I downloaded the dataset and cleaned it, to prepare it for Data Analysis.
 
 
 Follow this link to access the original blog post and spreadsheet containing the data:
+
 https://www.askamanager.org/2019/04/how-much-money-do-you-make-3.html
+
 A copy of the dataset usde is present in the data folder
