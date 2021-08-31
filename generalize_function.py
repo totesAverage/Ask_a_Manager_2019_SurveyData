@@ -8,7 +8,8 @@ Created on Wed Sep  1 00:24:16 2021
 def generalize(ser, match_name, default=None, regex=False, case=False):
     """ Search a series for text matches.
     Based on code from https://www.metasnake.com/blog/pydata-assign.html
-
+    More details can be read here as well: https://towardsdatascience.com/simplify-your-dataset-cleaning-with-pandas-75951b23568e
+    
     ser: pandas series to search
     match_name: tuple containing text to search for and text to use for normalization
     default: If no match, use this to provide a default value, otherwise use the original text
