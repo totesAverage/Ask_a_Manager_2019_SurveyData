@@ -158,5 +158,5 @@ final = final.rename(columns={'clean_industry': 'Sector', 'clean_salary': 'Annua
 # Rearrange the columns
 final = final.iloc[:,[0,4,1,3,2,5]]
 
-# Export the file as an excel file
+# Export the dataframe as an excel file
 final.to_excel(r'path\aam_clean_data.xlsx', index = False, header=True)
