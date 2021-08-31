@@ -1,0 +1,13 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as mat
+import seaborn as sb
+import string
+alphabet = string.ascii_letters+string.punctuation
+import re
+
+%matplotlib inline
+
+# load the data in
+df = pd.read_excel('Survey_2019.xlsx', header=1)
+df = df.set_axis(['Timestamp','Age_Range','Industry','Job','Salary_annual','Currency','Location','Years_of_Experience','Extra_info','Other'], axis=1)
