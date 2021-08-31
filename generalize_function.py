@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Sep  1 00:24:16 2021
-
-@author: ASUS
-"""
-
 def generalize(ser, match_name, default=None, regex=False, case=False):
     """ Search a series for text matches.
     Based on code from https://www.metasnake.com/blog/pydata-assign.html
