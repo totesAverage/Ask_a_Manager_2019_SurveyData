@@ -13,8 +13,6 @@ tempdf = df
 # Find the null values in Salary_annual and their index. Then remove the null values
 s = tempdf['Salary_annual']
 s[pd.isna(s)]
-tempdf['Salary_annual'] = tempdf.Salary_annual.dropna()
-tempdf.head()
 tempdf = tempdf.drop([30816,30207,17054])
 
 # Convert the Salary_annual column to a string
