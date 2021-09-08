@@ -20,9 +20,9 @@ tempdf = tempdf.drop([30816,30207,17054])
 # Convert the Salary_annual column to a string
 tempdf['Salary_annual'] = tempdf['Salary_annual'].astype('str')
 # Remove unwanted elements
-tempdf['Salary_annual'] = tempdf.Salary_annual.str.replace(' ', '', regex=True)
-tempdf['Salary_annual'] = tempdf.Salary_annual.str.replace(',', '', regex=True)
-tempdf['Salary_annual'] = tempdf.Salary_annual.str.replace('-', '', regex=True)
+char_to_replace = [' ', ',', '-', '+', ':','/']
+for char in char_to_replace:
+                   tempdf['Salary_annual'] = tempdf['Salary_annual'].apply(lambda x: x.replace(char, ''))
 
 #Extract the number values from Salary_annual
 tempdf['clean_salary'] = tempdf.Salary_annual.str.extract("(\d+)",expand=False).astype(float)
@@ -44,15 +44,9 @@ tempdf[m_val]
 tempdf['clean_salary'].loc[[15669,24626,5313]] *= 1000000 
 
 # Convert the clean_salary to USD
-tempdf.loc[tempdf['Currency'] == 'GBP', 'clean_salary'] *= 1.38
-tempdf.loc[tempdf['Currency'] == 'CAD', 'clean_salary'] *= 0.79
-tempdf.loc[tempdf['Currency'] == 'AUD/NZD', 'clean_salary'] *= 0.73
-tempdf.loc[tempdf['Currency'] == 'EUR', 'clean_salary'] *= 1.18
-tempdf.loc[tempdf['Currency'] == 'CHF', 'clean_salary'] *= 1.09
-tempdf.loc[tempdf['Currency'] == 'JPY', 'clean_salary'] *= 0.0091
-tempdf.loc[tempdf['Currency'] == 'SEK', 'clean_salary'] *= 0.12
-tempdf.loc[tempdf['Currency'] == 'HKD', 'clean_salary'] *= 0.13
-tempdf.loc[tempdf['Currency'] == 'ZAR', 'clean_salary'] *= 0.069
+currency_dict = {'GBP':1.38,'CAD':0.79,'AUD/NZD':0.73,'EUR':1.18,'CHF':1.09,'JPY':0.0091,'SEK':0.12,'HKD':0.13,'ZAR':0.069}
+for country, currency in currency_dict.items():
+    ytempdf.loc[ytempdf['Currency'] == country, 'clean_salary'] *= currency
 
 # Drop currencies with 'Other'
 tempdf = tempdf.drop(tempdf.loc[tempdf['Currency'] == 'Other'].index)
@@ -117,6 +111,9 @@ z = z.drop(z.loc[z['clean_industry'].isin(ind_list) == False].index)
 
 # Drop the 'Timestamp' column
 z = z.drop('Timestamp',axis=1)
+
+# Drop values where 'clean_salary' is below 1000 as these can't be used
+z = z.drop(z.loc[z['clean_salary'] < 1000].index)
 
 yr = z.copy()
 
