@@ -45,8 +45,8 @@ tempdf['clean_salary'].loc[[15669,24626,5313]] *= 1000000
 
 # Convert the clean_salary to USD
 currency_dict = {'GBP':1.38,'CAD':0.79,'AUD/NZD':0.73,'EUR':1.18,'CHF':1.09,'JPY':0.0091,'SEK':0.12,'HKD':0.13,'ZAR':0.069}
-for country, currency in currency_dict.items():
-    ytempdf.loc[ytempdf['Currency'] == country, 'clean_salary'] *= currency
+for country, rate in currency_dict.items():
+    ytempdf.loc[ytempdf['Currency'] == country, 'clean_salary'] *= rate
 
 # Drop currencies with 'Other'
 tempdf = tempdf.drop(tempdf.loc[tempdf['Currency'] == 'Other'].index)
