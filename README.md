@@ -8,3 +8,9 @@ Follow this link to access the original blog post and spreadsheet containing the
 https://www.askamanager.org/2019/04/how-much-money-do-you-make-3.html
 
 A copy of the dataset used is also present in the data folder. The final cleaned dataset is in the data folder as well.
+
+Below you can see a visualization of the cleaned data, done on Microsoft PowerBI.
+
+![Page 1](https://github.com/totesAverage/Ask_a_Manager_2019_SurveyData/blob/main/visuals/Screenshot%20(568).png)
+
+![Page 2](https://github.com/totesAverage/Ask_a_Manager_2019_SurveyData/blob/main/visuals/Screenshot%20(567).png)
