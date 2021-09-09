@@ -142,6 +142,12 @@ yr['clean_location'] = generalize(yr['Location'], location_patterns)
 loc_list = ['USA','Canada','UK','Australia','Germany','New Zealand','Ireland','Netherlands','Belgium','Sweden','France','Hong Kong','Italy','Finland','UAE']
 yr = yr.drop(z.loc[yr['clean_location'].isin(loc_list) == False].index)
 
+# Drop Duplicate Values
+yr = yr.drop(yr.loc[yr.duplicated(subset=None)].index)
+
+# Drop outliers that don't fit (I chose all values above 10 million)
+yr = yr.drop(yr.loc[yr['clean_salary'] > 10000000].index)
+
 final = yr.copy()
 
 # Drop the old columns
